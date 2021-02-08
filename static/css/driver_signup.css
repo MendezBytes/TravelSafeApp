@@ -1,0 +1,132 @@
+:root {
+    --color_tsf_red:rgb(228,0,43);
+    --color_tsf_dark_grey: #53565A;
+    --color_tsf_medium_grey: #888B8D;
+    --color_tsf_light_grey: #C8C9C7;
+    --color_tsf_white: white;
+   /* --color_background: #ffffff;*/
+    --color_background: #eeeeee;
+    --color_background_alt: #e0e0e0;
+    --color_text_white: #f2f2f2;
+    --color_text_black: #212121;
+    --color_red: #e63629;
+    --color_maroon: #a80009;
+    --color_black: #191919;
+    --color_white: #ffffff;
+    --color_navbar: #D50000;
+    --color_navbar_selected: #B71C1C;
+    --color_footer: #404040;
+    --color_footer_link: #FF8A80;
+    --color_footer_link_visited: #FF5252;
+    --color_footer_link_hover: #FFCDD2;
+    --color_success: #00C853;
+    --color_warning: #FF5722;
+    --color_failure: #C62828;
+    --color_thead: #2e2e2e;
+    --color_trow_odd: #EEEEEE;
+    --color_trow_even: #FFFFFF;
+    --color_hint: #283593;
+    /*--color_disabled: ;*/
+    --color_grey: #9E9E9E;
+    --color_play_purple: #691499;
+    --color_play_pink: #F50057;
+    --color_play_orange: #FFA000;
+    --color_card: #DEDEDE;
+    --color_card_background: #878787;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url('../fonts/Poppins-Regular.ttf');
+}
+
+
+html, body {
+    /*This ensures that the header, body and footer are properly positioned*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+    font-family: 'Poppins', serif !important;
+}
+
+.error{
+    font-weight: bold;
+    background-color: var(--color_tsf_light_grey);
+}
+
+.material-icons{
+    color : var(--color_tsf_red);
+}
+
+#submitButton{
+    color:white;
+
+}
+
+label{
+    font-size:1.1rem;
+    color:var(--color_tsf_red)  !important;
+    font-weight: bold;
+
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+    background-color: var(--color_background);
+}
+
+#header {
+    padding-bottom: 10px;
+}
+
+#page-content {
+    padding-bottom: 100px;
+    /* Height of the footer element */
+    padding-top: 60px;
+    background-color: #093546
+}
+
+.topBorder {
+    border-radius: 20px 20px 0 0;
+}
+
+.bottomBorder {
+    border-radius: 0 0 20px 20px;
+}
+
+/*.waves-effect.waves-white .waves-ripple {*/
+    /*!* The alpha value allows the text and background color of the button to still show through. *!*/
+    /*background-color: rgba(255, 255, 255, 0.65);*/
+/*}*/
+
+.btn {
+      background-color: var(--color_tsf_red);
+}
+
+.btn:hover {
+    background-color: var(--color_tsf_dark_grey);
+}
+
+.tsf-red {
+    background-color: var(--color_tsf_red);
+}
+
+.tsf-red-text {
+    color: var(--color_tsf_red) !important;
+}
+
+.logo-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+
+}
+
+.datepicker-date-display{
+    background-color: var(--color_tsf_red);
+
+}

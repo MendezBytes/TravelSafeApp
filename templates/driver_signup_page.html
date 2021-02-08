@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TravelSafeApp Driver Sign up</title>
+    <link rel="icon" type="image/png" href={{ url_for("static", filename="img/favicon.ico") }}>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+          integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href={{ url_for("static", filename="css/driver_signup.css") }}>
+
+</head>
+<body>
+
+
+<img class="logo-img" src="{{ url_for("static", filename="img/logo.png") }}" alt="TravelSafeApp">
+<div class="row">
+    <h4 class="center-align">Driver Registration</h4>
+</div>
+{% if form.errors %}
+    <div class="row center-align">
+        <div class="white-text tsf-red two-px-padding">
+            <h6>Registration Failed! Please fix the following:</h6>
+        </div>
+        <ul class="errors">
+            {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                {% for error in field_errors %}
+                    <li>{{ form[field_name].label }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+        <div class="white-text tsf-red">
+            <h6>---</h6>
+        </div>
+
+    </div>
+{% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <p>Please complete the following form to register for your QR code. All fields are mandatory.</p>
+        </div>
+        <form method="POST" class="col s12" enctype="multipart/form-data">
+            {{ form.csrf_token }}
+
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <i class="material-icons prefix">face</i>
+                    {{ form.firstname }}
+                    {% if form.firstname.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.firstname.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="firstname">first name</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <i class="material-icons prefix">face</i>
+                    {{ form.lastname }}
+                    {% if form.lastname.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.lastname.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="lastname">last name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="valign-wrapper">
+                    <div class="input-field col">
+                        <i class="material-icons prefix">contact_phone</i>
+                        <label for="contact_num">phone number</label>
+                        {{ form.contact_num }}
+                        {% if form.contact_num.errors %}
+                            <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                                {% for error in form.contact_num.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col">
+                        <i class="tooltipped material-icons" data-position="left"
+                           data-tooltip="last 7 digits of phone number e.g. 5551234">info</i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+
+                <div class="input-field col s11 m8 l5">
+                    <i class="material-icons prefix">directions_car</i>
+                    {{ form.veh_brand }}
+                    {% if form.veh_brand.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.veh_brand.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="veh_brand">Vehicle Brand</label>
+                </div>
+                <div class="col s1 m1 l1 ">
+                    <i class="tooltipped material-icons" data-position="left"
+                       data-tooltip="Hyundai,Toyota,Nissan,Daihatsu etc.">info</i>
+                </div>
+
+
+                <div class="input-field col s11 m5 l5">
+                    <i class="material-icons prefix">directions_car</i>
+                    {{ form.veh_make }}
+                    {% if form.veh_make.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.veh_make.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="veh_color">Vehicle Make</label>
+                </div>
+                <div class="col s1 m1 l1">
+                    <i class="tooltipped material-icons" data-position="left"
+                       data-tooltip="Tiida,Sentra,Yaris">info</i>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+
+                    <i class="material-icons prefix">local_car_wash</i>
+                    {{ form.veh_color }}
+                    {% if form.veh_color.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.veh_color.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="veh_color">Vehicle Color</label>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+
+                    <i class="material-icons prefix">fact_check</i>
+                    {{ form.license_plate_num }}
+                    {% if form.license_plate_num.errors %}
+                        <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
+                            {% for error in form.license_plate_num.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <label for="license_plate_num">License Plate Number</label>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="file-field input-field  col s12 m6 l6">
+                    <div class="btn">
+                        <span>Choose File</span>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <i class="material-icons prefix">add_a_photo</i>
+                        {{ form.id_picture }}
+                        <input id="file_text" class="file-path validate" type="text" placeholder="Upload ID Image">
+                        {% if form.id_picture.errors %}
+                            <div class="error col s12 m12 l12 center-align tsf-red-text darken-4">
+                                {% for error in form.id_picture.errors %}
+                                    {{ error }}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m12 l12 center-align">
+                <button id="submitForm" data-target="modal1"
+                        class="btn modal-trigger waves-effect waves-light btn-large center-align">Submit
+                    <i class="material-icons right" id="submitButton">send</i>
+                </button>
+            </div>
+
+
+            <div id="modal1" class="modal modal-fixed-footer">
+                <div class="modal-content">
+                    {% include "terms_and_conditions.html" %}
+                </div>
+                <div class="modal-footer">
+                    <button id="agreeBTN"
+                            class="modal-close waves-effect waves-green btn-flat">Agree
+                    </button>
+                    <button type=button id="disagreeBTN"
+                            class="modal-close waves-effect waves-red btn-flat">Disagree
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="{{ url_for('static', filename = 'js/driver_signup.js') }}"></script>
+
+</html>
