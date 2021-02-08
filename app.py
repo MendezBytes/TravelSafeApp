@@ -72,5 +72,9 @@ def test():
     qr_code_url = app.static_url_path+"/generated_qr_code/qr_code.png"
     return render_template('qr_code_success.html', qrcode=qr_code_url)
 
+@app.route('/qrscan', methods=['GET', 'POST'])
+def qr_scan():
+    return render_template('qr_scan.html')
+
 if __name__ == '__main__':
     app.run()
