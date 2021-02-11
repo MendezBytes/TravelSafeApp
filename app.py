@@ -3,7 +3,7 @@ import traceback
 import uuid
 from datetime import datetime
 from shutil import copyfile
-
+from pathlib import Path
 import qrcode
 from flask import Flask, render_template, request
 from flask_cors import CORS
@@ -25,6 +25,11 @@ cors = CORS()
 cors.init_app(app)
 
 configure_uploads(app, images)
+#Make sure directories are present
+Path(os.path.join(app.instance_path,"uploads")).mkdir(parents=True, exist_ok=True)
+Path(os.path.join(app.static_folder,"generated_qr_code")).mkdir(parents=True, exist_ok=True)
+Path(os.path.join(app.static_folder,"temp_images")).mkdir(parents=True, exist_ok=True)
+
 try:
     engine = create_engine(app.config.get('DATABASE_URI'), convert_unicode=True)
     db_session = scoped_session(sessionmaker(autocommit=False,
@@ -73,7 +78,8 @@ def driver_register_page():
         return render_template('driver_signup_page.html', form=DriverRegistrationForm())
     except Exception as e:
         print(traceback.format_exc())
-        return render_template('driver_signup_page.html', form=DriverRegistrationForm())
+        return traceback.format_exc()
+        #return render_template('driver_signup_page.html', form=DriverRegistrationForm())
 
 
 @app.route('/driverCheck/<encrypted_string>')
