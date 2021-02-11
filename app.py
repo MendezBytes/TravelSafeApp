@@ -13,8 +13,10 @@ from werkzeug.utils import secure_filename
 from config import BaseConfig
 from forms.signup_page_forms import DriverRegistrationForm, images
 from models.db_models import Base, Drivers
+from utility_functions.encrypter import encode_license_num
 
 app = Flask(__name__)
+
 app.config.from_object(BaseConfig)
 
 cors = CORS()
@@ -43,23 +45,27 @@ def driver_register_page():
                 return render_template('driver_signup_page.html', form=DriverRegistrationForm())
             # Save image
             filename = images.save(request.files['id_picture'], name=form.license_plate_num.data + ".")
-            # Generate qr code
-            current_date_string = datetime.now().strftime("%A %d %Y at %H:%M:%S %p %Z")
-            qrcode_data = f"Driver first name:{form.firstname.data}\nDriver last name: {form.lastname.data}\nLicense plate number: {form.license_plate_num.data}\nBrand of car: {form.veh_brand.data}\nModel of car: {form.veh_make.data}\nColour of car:{form.veh_color.data}\nRegistration Date:{current_date_string}"
-            img = qrcode.make(qrcode_data)
-            qr_code_path = os.path.join(app.static_folder,"generated_qr_code","qr_code.png")
-            qr_code_url = app.static_url_path+"/generated_qr_code/qr_code.png"
-            img.save(qr_code_path)
-            #TODO possiblt validate license plate here?
-            #TODO also possibly validat id card num
+            # TODO possiblt validate license plate here?
+            # TODO also possibly validat id card num
+
             new_driver = Drivers(driver_uuid=str(uuid.uuid1()), firstname=form.firstname.data,
                                  lastname=form.lastname.data, license_plate=form.license_plate_num.data,
                                  contact_num=form.contact_num.data, vehicle_color=form.veh_color.data,
                                  vehicle_brand=form.veh_brand.data, vehicle_make=form.veh_make.data,
-                                 added_date=datetime.now(), qr_data=qrcode_data, ip_address=request.remote_addr,
+                                 added_date=datetime.now(), ip_address=request.remote_addr,
                                  id_picture_path=filename, user_agent=request.user_agent.string)
             db_session.add(new_driver)
             db_session.commit()
+            qr_code_data = request.base_url +"driverCheck/"+encode_license_num(new_driver.driver_id,new_driver.license_plate)
+            new_driver.qr_data = qr_code_data
+            db_session.commit()
+            # Generate qr code
+            img = qrcode.make(qr_code_data)
+            qr_code_path = os.path.join(app.static_folder,"generated_qr_code","qr_code.png")
+            qr_code_url = app.static_url_path+"/generated_qr_code/qr_code.png"
+            img.save(qr_code_path)
+
+
             return render_template('qr_code_success.html', qrcode=qr_code_url)
         return render_template('driver_signup_page.html', form=DriverRegistrationForm())
     except Exception as e:
