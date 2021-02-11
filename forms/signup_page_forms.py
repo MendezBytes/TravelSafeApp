@@ -15,7 +15,7 @@ images = UploadSet('images', IMAGES,default_dest=lambda app: os.path.join(app.in
 class DriverRegistrationForm(FlaskForm):
     firstname = StringField('First Name', [validators.Length(min=2, max=40),DataRequired()])
     lastname = StringField('Last Name', [validators.Length(min=2, max=40),DataRequired()])
-    license_plate_num = StringField('License Plate Number', [validators.Length(min=7, max=7),DataRequired()],render_kw={'maxlength': '7'})
+    license_plate_num = StringField('License Plate Number', [validators.Length(min=4, max=7),DataRequired()],render_kw={'maxlength': '7'})
     contact_num = StringField('Phone Number', [validators.Length(min=7, max=7), DataRequired()],
                          render_kw={'maxlength': '7'})
     veh_color = StringField('Vehicle Color', [validators.Length(min=2, max=40), DataRequired()])

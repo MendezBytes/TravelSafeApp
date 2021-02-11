@@ -91,6 +91,7 @@ def driverCheck(encrypted_string):
         driver_pic = os.path.join(app.instance_path, "uploads", driver.id_picture_path)
         if driver and os.path.exists(driver_pic):
             #Temporarily move over image to static
+            #TODO need to delete any current pic, and also give the file a random name
             copyfile(driver_pic,  os.path.join(app.static_folder, "temp_images", "temp.png"))
             driver_url = app.static_url_path + "/temp_images/temp.png"
             return render_template('driverInfoPage.html', driver=driver, driver_pic=driver_url)
