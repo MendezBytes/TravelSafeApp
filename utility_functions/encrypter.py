@@ -14,7 +14,7 @@ def decode_license_num(encrypted_string):
     cipher = AES.new(secret_key, AES.MODE_CFB, iv)
     decoded_string = cipher.decrypt(bytes.fromhex(encrypted_string))[len(iv):]
     driver_id,licence_plate = decoded_string.decode("utf-8").split("_")
-    return decoded_string
+    return driver_id,licence_plate
 
 
 # if __name__ == "__main__":

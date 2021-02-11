@@ -1,10 +1,10 @@
 :root {
-    --color_tsf_red: rgb(228, 0, 43);
+    --color_tsf_red:rgb(228,0,43);
     --color_tsf_dark_grey: #53565A;
     --color_tsf_medium_grey: #888B8D;
     --color_tsf_light_grey: #C8C9C7;
     --color_tsf_white: white;
-    /* --color_background: #ffffff;*/
+   /* --color_background: #ffffff;*/
     --color_background: #eeeeee;
     --color_background_alt: #e0e0e0;
     --color_text_white: #f2f2f2;
@@ -52,23 +52,23 @@ html, body {
 
 }
 
-.error {
+.error{
     font-weight: bold;
     background-color: var(--color_tsf_light_grey);
 }
 
-.material-icons {
-    color: var(--color_tsf_red);
+.material-icons{
+    color : var(--color_tsf_red);
 }
 
-#submitButton {
-    color: white;
+#submitButton{
+    color:white;
 
 }
 
-label {
-    font-size: 1.1rem;
-    color: var(--color_tsf_red) !important;
+label{
+    font-size:1.1rem;
+    color:var(--color_tsf_red)  !important;
     font-weight: bold;
 
 }
@@ -99,12 +99,12 @@ label {
 }
 
 /*.waves-effect.waves-white .waves-ripple {*/
-/*!* The alpha value allows the text and background color of the button to still show through. *!*/
-/*background-color: rgba(255, 255, 255, 0.65);*/
+    /*!* The alpha value allows the text and background color of the button to still show through. *!*/
+    /*background-color: rgba(255, 255, 255, 0.65);*/
 /*}*/
 
 .btn {
-    background-color: var(--color_tsf_red);
+      background-color: var(--color_tsf_red);
 }
 
 .btn:hover {
@@ -120,14 +120,14 @@ label {
 }
 
 .logo-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 
 }
 
-.datepicker-date-display {
+.datepicker-date-display{
     background-color: var(--color_tsf_red);
 
 }
