@@ -12,6 +12,7 @@ class Drivers(Base):
     driver_uuid = Column(String(100))
     firstname = Column(String(30))
     lastname = Column(String(30))
+    email = Column(String(30))
     license_plate = Column(String(7))
     contact_num = Column(String(12))
     vehicle_color = Column(String(40))
@@ -21,4 +22,5 @@ class Drivers(Base):
     qr_data = Column(String(400))
     ip_address = Column(String(100))
     id_picture_path = Column(String(300))
+    car_pic_path = Column(String(300))
     user_agent = Column(String(300))

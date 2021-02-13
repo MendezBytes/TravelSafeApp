@@ -22,11 +22,16 @@
 <div class="container">
 
     <div class="col center-align">
-
-        <img alt="DRIVER_PICTURE" style="margin-left: auto;margin-right: auto;width: 20rem" src={{ driver_pic }}>
-
         <table>
             <tbody>
+              <tr>
+                <th>Picture of Driver</th>
+                <td>  <img alt="DRIVER_PICTURE" style="margin-left: auto;margin-right: auto;width: 20rem" src={{ driver_pic }}></td>
+            </tr>
+            <tr>
+                <th>Picture of Car</th>
+                <td> <img alt="CAR_PICTURE" style="margin-left: auto;margin-right: auto;width: 20rem" src={{ car_pic }}></td>
+            </tr>
             <tr>
                 <th>First Name</th>
                 <td>{{ driver.firstname }}</td>

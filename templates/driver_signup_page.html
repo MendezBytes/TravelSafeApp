@@ -40,7 +40,7 @@
 <div class="container">
     <div class="row">
         <div class="col s12 m12 l12">
-            <p>Please complete the following form to register for your QR code. All fields are mandatory.</p>
+            <h6>Please complete the following form to register for your QR code. All fields are mandatory.</h6>
         </div>
         <form method="POST" class="col s12" enctype="multipart/form-data">
             {{ form.csrf_token }}
@@ -56,7 +56,7 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    <label for="firstname">first name</label>
+                    <label for="firstname">First Name</label>
                 </div>
                 <div class="input-field col s12 m6 l6">
                     <i class="material-icons prefix">face</i>
@@ -68,15 +68,16 @@
                             {% endfor %}
                         </div>
                     {% endif %}
-                    <label for="lastname">last name</label>
+                    <label for="lastname">Last Name</label>
                 </div>
             </div>
 
+
             <div class="row">
                 <div class="valign-wrapper">
-                    <div class="input-field col">
+                    <div class="input-field ">
                         <i class="material-icons prefix">contact_phone</i>
-                        <label for="contact_num">phone number</label>
+                        <label for="contact_num">Phone Number</label>
                         {{ form.contact_num }}
                         {% if form.contact_num.errors %}
                             <div class="error col s12 m12 l12 center-align tsf-red-text darken-4 ">
@@ -92,6 +93,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col s12 m12 l12">
+
+                    <p>Please upload a picture of your face. Ensure there is proper lighting</p>
+                    <div class="file-field input-field  col s12 m6 l6">
+                        <div class="btn">
+                            <span>Choose File</span>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <i class="material-icons prefix">add_a_photo</i>
+                            {{ form.id_picture }}
+                            <input id="file_text" class="file-path validate" type="text" placeholder="Upload ID Image">
+                            {% if form.id_picture.errors %}
+                                <div class="error col s12 m12 l12 center-align tsf-red-text darken-4">
+                                    {% for error in form.id_picture.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row ">
 
@@ -170,21 +196,25 @@
 
 
             <div class="row">
-                <div class="file-field input-field  col s12 m6 l6">
-                    <div class="btn">
-                        <span>Choose File</span>
-                    </div>
-                    <div class="file-path-wrapper">
-                        <i class="material-icons prefix">add_a_photo</i>
-                        {{ form.id_picture }}
-                        <input id="file_text" class="file-path validate" type="text" placeholder="Upload ID Image">
-                        {% if form.id_picture.errors %}
-                            <div class="error col s12 m12 l12 center-align tsf-red-text darken-4">
-                                {% for error in form.id_picture.errors %}
-                                    {{ error }}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                <div class="col s12 m12 l12">
+                    <p>Please upload a side picture of your car. Ensure there is proper lighting</p>
+                    <div class="file-field input-field  col s12 m6 l6">
+                        <div class="btn">
+                            <span>Choose File</span>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <i class="material-icons prefix">add_a_photo</i>
+                            {{ form.car_picture }}
+                            <input id="file_text" class="file-path validate" type="text"
+                                   placeholder="Upload Picture of Car">
+                            {% if form.car_picture.errors %}
+                                <div class="error col s12 m12 l12 center-align tsf-red-text darken-4">
+                                    {% for error in form.id_picture.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
             </div>

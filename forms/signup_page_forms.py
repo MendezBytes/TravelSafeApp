@@ -9,7 +9,8 @@ from wtforms.validators import DataRequired
 import os
 
 
-images = UploadSet('images', IMAGES,default_dest=lambda app: os.path.join(app.instance_path,"uploads"))
+id_images = UploadSet('images', IMAGES,default_dest=lambda app: os.path.join(app.instance_path,"uploads"))
+car_images = UploadSet('images', IMAGES,default_dest=lambda app: os.path.join(app.instance_path,"uploads"))
 
 
 class DriverRegistrationForm(FlaskForm):
@@ -21,6 +22,7 @@ class DriverRegistrationForm(FlaskForm):
     veh_color = StringField('Vehicle Color', [validators.Length(min=2, max=40), DataRequired()])
     veh_brand = StringField('Vehicle Brand', [validators.Length(min=2, max=40), DataRequired()])
     veh_make = StringField('Vehicle Make', [validators.Length(min=2, max=40), DataRequired()])
-    id_picture = FileField('ID Picture', [FileRequired(), FileAllowed(images, 'Images only!')])
+    id_picture = FileField('ID Picture', [FileRequired(), FileAllowed(id_images, 'Images only!')])
+    car_picture = FileField('CAR Picture', [FileRequired(), FileAllowed(car_images, 'Images only!')])
 
 
