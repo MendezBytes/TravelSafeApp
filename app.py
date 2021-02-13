@@ -106,12 +106,12 @@ def driverCheck(encrypted_string):
             files = glob.glob(os.path.join(app.static_folder, "temp_images", "*"))
             for f in files:
                 os.remove(f)
-            temp_driver_pic = str(current_milli_time()) + "driver_temp.png"
-            temp_id_pic = str(current_milli_time()) + "id_temp.png"
-            copyfile(car_pic,  os.path.join(app.static_folder, "temp_images",temp_driver_pic))
-            copyfile(driver_pic,  os.path.join(app.static_folder, "temp_images",temp_id_pic))
+            temp_car_pic = str(current_milli_time()) + "car_temp.png"
+            temp_driver_pic = str(current_milli_time()) + "id_temp.png"
+            copyfile(car_pic,  os.path.join(app.static_folder, "temp_images",temp_car_pic))
+            copyfile(driver_pic,  os.path.join(app.static_folder, "temp_images",temp_driver_pic))
             driver_url = app.static_url_path + "/temp_images/" + temp_driver_pic
-            car_url = app.static_url_path + "/temp_images/" + temp_id_pic
+            car_url = app.static_url_path + "/temp_images/" + temp_car_pic
             return render_template('driverInfoPage.html', driver=driver, driver_pic=driver_url ,car_pic = car_url)
         else:
             return "No driver found"
