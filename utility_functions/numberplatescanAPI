@@ -1,0 +1,11 @@
+# pip install requests
+import requests
+from pprint import pprint
+regions = ['gb', 'it'] # Change to your country
+with open('car3.jpg', 'rb') as fp:
+    response = requests.post(
+        'https://api.platerecognizer.com/v1/plate-reader/',
+        data=dict(regions=regions),  # Optional
+        files=dict(upload=fp),
+        headers={'Authorization': 'Token cff86acc411eade2f31318af977a93b6f3626a02'})
+pprint(response.json())
